@@ -24,7 +24,7 @@
 			},
 			"response": [
 				{
-					"id": "b6d6559b-5c6e-47f2-839e-4b21dd2140ce",
+					"id": "7c83bfb4-294a-4b2a-85fb-21dad6e96596",
 					"name": "Reads all addresses of the current user.",
 					"originalRequest": {
 						"url": "https://simulator-api.db.com:443/gw/dbapi/v1/addresses",
@@ -147,6 +147,74 @@
 			]
 		},
 		{
+			"name": "Reads all addresses of the current user.",
+			"request": {
+				"url": "https://simulator-api.db.com:443/gw/dbapi/v2/addresses",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Reads all addresses of the current user. There might be several private and business addresses. AddressType can be BUSINESS_ADDRESS or PRIVATE_ADDRESS. Country format is ISO code."
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieves personal information about the current partner.",
+			"request": {
+				"url": "https://simulator-api.db.com:443/gw/dbapi/v2/partners",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Retrieves personal information (e.g. first name, last name, date of birth) about the current partner."
+			},
+			"response": []
+		},
+		{
+			"name": "Reads all transactions of the current cash account.",
+			"request": {
+				"url": "https://simulator-api.db.com:443/gw/dbapi/v2/transactions?iban={{iban}}&currencyCode={{currencyCode}}&bookingDateFrom={{bookingDateFrom}}&bookingDateTo={{bookingDateTo}}&sortBy=bookingDate[ASC]&limit=10&offset=0",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Reads all transactions for a specific account of the current user. If given IBAN is not valid or does not represent an account of the current user, an empty result is returned. It is not apparent who issued a transaction, only whether the user gained or lost money by it (based on whether the amount is positive or negative respectively). The maximum number of transactions returned is 200."
+			},
+			"response": []
+		},
+		{
+			"name": "Reads all cash accounts of the current user.",
+			"request": {
+				"url": "https://simulator-api.db.com:443/gw/dbapi/v2/cashAccounts?iban={{iban}}&currencyCode={{currencyCode}}&limit=10&offset=0",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Reads all cash accounts of the current user. Only current accounts and accounts in the currency EUR are returned. If given IBAN is not valid or does not represent an account of the current user, an empty result is returned."
+			},
+			"response": []
+		},
+		{
 			"name": "Reads all cash accounts of the current user.",
 			"request": {
 				"url": "https://simulator-api.db.com:443/gw/dbapi/v1/cashAccounts?iban={{iban}}&currencyCode={{currencyCode}}",
@@ -163,7 +231,7 @@
 			},
 			"response": [
 				{
-					"id": "d0dd1eda-35c9-4db9-a6ff-deb3421a3859",
+					"id": "c0a0e9c5-f026-4411-871e-fedcbd34fb3d",
 					"name": "Reads all cash accounts of the current user.",
 					"originalRequest": {
 						"url": {
@@ -420,7 +488,7 @@
 			},
 			"response": [
 				{
-					"id": "884e69b2-6567-4f91-a555-2415dbb78857",
+					"id": "cab9e78f-ee07-4880-8a4c-fe9d9e251080",
 					"name": "Reads all transactions of the current cash account.",
 					"originalRequest": {
 						"url": {
@@ -587,7 +655,7 @@
 			},
 			"response": [
 				{
-					"id": "ea0d7be9-233c-427a-940f-03c2cdd7351a",
+					"id": "bd7190c5-279f-4870-b432-36ddf5bca41a",
 					"name": "Retrieves personal information about the current partner.",
 					"originalRequest": {
 						"url": "https://simulator-api.db.com:443/gw/dbapi/v1/partners",
@@ -771,7 +839,7 @@
 			},
 			"response": [
 				{
-					"id": "04e38457-cb29-43c3-b27f-878255d83b90",
+					"id": "7a6078a8-fc23-4e6f-9fc3-7a2eb7832ac9",
 					"name": "Checks the solvency for the current customer for a given account.",
 					"originalRequest": {
 						"url": {
@@ -932,6 +1000,33 @@
 				],
 				"body": {},
 				"description": "Signing new contracts such as a lease contract often require the customer to provide a salary certificate from their bank. Getting hold of such a proof can be time consuming and annoying. TransactionCertificate automates this process and provides all the necessary data instantly. All parties save time on concluding contracts. Please note: This endpoint is currently only available in our APIs simulator stack and ready for you to test it. Don't hesitate to submit us your feedback and stay tuned on our future product development."
+			},
+			"response": []
+		},
+		{
+			"name": "3scale Reads all addresses of the current user.",
+			"request": {
+				"url": "https://db-api-gateway.app.test.openshift.es/gw/dbapi/v1/addresses",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJraWQiOiJyc2ExIiwiYWxnIjoiUlM1MTIifQ.eyJhdWQiOiJmM2JjZDlkYi1lMGY4LTQxY2UtOGUxNS00ODVjYjBiMWJjYjgiLCJpc3MiOiJodHRwczpcL1wvc2ltdWxhdG9yLWFwaS5kYi5jb21cL2d3XC9vaWRjXC8iLCJleHAiOjE1MTMxMjI0MTEsImlhdCI6MTUxMzEyMTgxMSwianRpIjoiY2E3MzUzNDQtMmU0Ni00MGY1LTk2MjEtYjMyOGZkMTM4N2JlIn0.ODLmiiixM8BKZmNM869t08cpFVVavuWE9AsCNnGxwuHyoKcNDJaHDxYhdAnY1Q5AbzAcyIVUwmNHZ-QPhV8MUe3PD-UnEVWr0XMfw6jLuflTzg-Pur730djiVuM4hv5bZSSID98PPH2KKt2tkY437cZek0sSKeNRLeQ_SBREw49HKp84Y8F87JgUTRigWxYXpoXdAr-gjie9eNARp8CZXw_CLDeYv2cUH3tzXVTg5qhB0iJGqm0vRaNJennyYjv7eOWvN_o3ccojGSTtm06dFKl2kC1nDcq1GFKniVS1W0va3ZNWK--jAHpyG-MKitqbuh8u45KdJbAjsACpqd0-TQ",
+						"description": ""
+					},
+					{
+						"key": "user-key",
+						"value": "dcd6b0554d1b38fff2b4bc43fad96048",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Reads all addresses of the current user. There might be several private and business addresses. AddressType can be BUSINESS_ADDRESS or PRIVATE_ADDRESS. Country format is ISO code."
 			},
 			"response": []
 		}
